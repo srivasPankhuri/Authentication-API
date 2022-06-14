@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const DATABASE_URL = process.env;
+const DATABASE_URL = process.env.MONGO_URI;
 
 exports.connect = (DATABASE_URL) => {
   // Connecting to the database
