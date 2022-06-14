@@ -1,5 +1,7 @@
 require("dotenv").config();
-require("./config/database").connect();
+const connectDb=require ("./config/database.js");
+const DATABASE_URL=process.env.MONGO_URI;
+connectDb(DATABASE_URL);
 const express = require("express");
 
 const app = express();

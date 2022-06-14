@@ -1,22 +1,15 @@
-const mongoose = require("mongoose");
+const mongoose=require("mongoose");
 
-const DATABASE_URL = process.env.MONGO_URI;
+require("dotenv").config();
 
-exports.connect = (DATABASE_URL) => {
-  // Connecting to the database
-  mongoose
-    .connect(DATABASE_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
+
+const connectDb=(DATABASE_URL)=>{
+    return mongoose.connect(DATABASE_URL).then((success)=>{
+        console.log("Database connected Successfully");
+    }).catch((error)=>{
+        console.log("Database not connected");
+        console.log(error);
     })
-    .then(() => {
-      console.log("Successfully connected to database");
-    })
-    .catch((error) => {
-        console.log("database connection failed. exiting now...");
-      console.error(error);
-      process.exit(1);
-    });
-};
+}
+
+module.exports=connectDb;
