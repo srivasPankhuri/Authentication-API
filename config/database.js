@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
-const { MONGO_URI } = process.env;
+const DATABASE_URL = process.env;
 
-exports.connect = () => {
+exports.connect = (DATABASE_URL) => {
   // Connecting to the database
   mongoose
-    .connect('MONGO_URI', {
+    .connect(DATABASE_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
